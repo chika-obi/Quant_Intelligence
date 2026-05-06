@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "UserConfig": {
+      "title": "User Configuration",
+      "description": "User-specific settings and preferences for the Quant Edge platform.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique ID of the user."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The user's email address."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name."
+        },
+        "confidenceThreshold": {
+          "type": "number",
+          "description": "Minimum confidence level for trade signals."
+        },
+        "learningRate": {
+          "type": "number",
+          "description": "Learning rate for the local model adaptation."
+        },
+        "notificationsEnabled": {
+          "type": "boolean",
+          "description": "Whether push notifications are enabled."
+        },
+        "researchMode": {
+          "type": "boolean",
+          "description": "Whether research mode is active."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "researcher", "viewer"],
+          "description": "The user's role in the system."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last time the configuration was updated."
+        }
+      },
+      "required": ["userId", "email"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserConfig",
+      "description": "User profile and configuration data."
+    }
+  }
+}

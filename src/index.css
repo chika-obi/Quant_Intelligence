@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Manrope", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Crimson Pro", serif;
+
+  --color-surface: #0a0a0a;
+  --color-surface-container: #141414;
+  --color-surface-container-low: #1a1a1a;
+  --color-surface-container-lowest: #050505;
+  --color-surface-container-high: #222222;
+  --color-surface-container-highest: #2a2a2a;
+  
+  --color-primary: #ffffff;
+  --color-primary-container: #1e1e1e;
+  --color-on-primary-container: #a0a0a0;
+  
+  --color-secondary: #00ff9d;
+  --color-secondary-container: rgba(0, 255, 157, 0.1);
+  --color-secondary-fixed: #00ff9d;
+  --color-secondary-fixed-dim: #00cc7e;
+  
+  --color-tertiary: #ffaa00;
+  --color-tertiary-fixed: #ffaa00;
+  --color-tertiary-fixed-dim: #cc8800;
+  --color-on-tertiary-container: #ffaa00;
+  
+  --color-on-surface: #e0e0e0;
+  --color-on-surface-variant: #a0a0a0;
+  --color-outline: #333333;
+  --color-outline-variant: #444444;
+  
+  --color-error: #ff4444;
+  --color-error-container: rgba(255, 68, 68, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+  
+  .graphite-sheen {
+    background: linear-gradient(135deg, #141414 0%, #050505 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .chart-grid {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .tech-border {
+    @apply border border-outline/50;
+  }
+
+  .research-mode {
+    @apply font-serif;
+  }
+  
+  .research-mode h1, .research-mode h2, .research-mode h3 {
+    @apply font-headline tracking-normal;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 157, 0.1);
+    border-radius: 10px;
+  }
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 157, 0.3);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes loading {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(200%); }
+}
+
+.animate-dash {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 3s linear forwards;
+}
